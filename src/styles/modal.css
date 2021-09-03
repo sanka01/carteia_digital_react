@@ -1,0 +1,39 @@
+.modal{
+    position: absolute; 
+    margin: auto;
+    inset: 20px; 
+    height: 50vh;
+    width: 25vw;
+    border: 1px solid rgb(204, 204, 204); 
+    border-radius: 20px;
+    background: rgb(255, 255, 255); 
+    overflow: auto; 
+    outline: none; 
+    padding: 20px;
+}
+.closeButton{
+    background-color:rgba(187, 76, 76, 0.514);
+    border: 0;
+    cursor: pointer;
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: rgba(24, 20, 20, 0.205);
+    font-weight: 800;
+    font-size: 1.2em;
+}
+.formModal{
+    background-color: blanchedalmond;
+    padding: 1em;
+    margin: auto;
+    width: 50%;
+}
+.formModal input{
+    margin: 1em;
+    border-radius: 25px;
+    padding: .3em;
+    border-bottom: 1px solid #000;
+    border-top: 0;
+    border-left: 0;
+    border-right: 0;
+}
