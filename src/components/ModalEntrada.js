@@ -6,7 +6,6 @@ import {setDados} from '../control/ControleDados.js';
 const ModalEntrada = (props) => {
     const [modalIsOpen, setIsOpen] = useState(false);
     const [state, setState] = useState({nome: "", valor: 0, tags: [], data: undefined});
-
     function openModal() {
         setIsOpen(true);
     }
@@ -18,6 +17,7 @@ const ModalEntrada = (props) => {
     }
     function submitModal(params) {
     }
+
 
     return (
         <div>

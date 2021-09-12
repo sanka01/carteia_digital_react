@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import ModalEntrada from './ModalEntrada';
-
+import "../styles/botao.css";
 
 
 
@@ -18,7 +18,7 @@ const Entrada = (props)=>{
             <td>{state.valor}</td>
             <td>{state.data}</td>
             <td>{state.tags}</td>
-            <td><ModalEntrada label="EDITAR"/></td>
+            <td><ModalEntrada classname="btn btn-warning" label="EDITAR"/></td>
             <td>EXCLUIR</td>
             <td>MOVER</td>
         </tr>
