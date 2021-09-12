@@ -59,10 +59,10 @@ class ModalEntrada extends React.Component {
             nome: "", 
             valor: 0, 
             tags: "", 
-            data: undefined
+            data: undefined,
+            modalIsOpen: false,
         };
 
-        this.modalIsOpen = false;
         this.label = props.label;
 
         this.handleChange = this.handleChange.bind(this);
@@ -70,13 +70,27 @@ class ModalEntrada extends React.Component {
     }
 
     openModal() {
-        this.modalIsOpen = true;
+        this.setState({
+                nome:  this.state.nome,
+                valor: this.state.valor,
+                tags:  this.state.tags,
+                data:  this.state.data,
+                modalIsOpen: true
+            }
+        )
     }
 
     afterOpenModal() {}
 
     closeModal() {
-        this.modalIsOpen = false;
+        this.setState({
+            nome:  this.state.nome,
+            valor: this.state.valor,
+            tags:  this.state.tags,
+            data:  this.state.data,
+            modalIsOpen: false
+            }
+        )
     }
 
     handleChange(event) {
