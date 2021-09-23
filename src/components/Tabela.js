@@ -23,7 +23,8 @@ const Tabela = (props)=>{
                 nome={v.nome} 
                 valor={v.valor} 
                 data={v.data} 
-                tags={v.tags}/>
+                tags={v.tags}
+                v={JSON.stringify(v)}/>
             );
     }
     const [state, setState] = useState({

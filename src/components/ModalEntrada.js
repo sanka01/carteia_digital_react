@@ -5,11 +5,23 @@ import '../styles/modal.css';
 class ModalEntrada extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
+        console.log(props)
+        let valor = props.valor !== undefined ? JSON.parse(props.valor) : undefined;
+        this.state = 
+        props.valor === undefined ?
+        {
             nome: "", 
             valor: 0, 
             tags: "", 
             data: undefined,
+            modalIsOpen: false,
+        } 
+        :
+        {
+            nome: valor.nome, 
+            valor: valor.valor, 
+            tags: valor.tags, 
+            data: valor.data,
             modalIsOpen: false,
         };
 
@@ -21,17 +33,14 @@ class ModalEntrada extends React.Component {
 
     handleChange(event) {
         const t = event.target
+        const name = t.name
         this.setState({
-            nome: t.nome,
-            valor: t.valor,
-            tags: t.tags,
-            data: t.data
+            [name]: t.value,
         })
-        console.log(this.label + " > " + JSON.stringify(this.state))
     }
 
     handleSubmit(event) {
-        alert('Formulário enviado com sucesso: \n' + this.state);
+        alert('Formulário enviado com sucesso: \n' + JSON.stringify(this.state));
         event.preventDefault();
     }
     

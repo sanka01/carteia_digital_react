@@ -10,6 +10,7 @@ const Entrada = (props)=>{
         valor: props.valor,
         data: props.data,
         tags: props.tags,
+        v: props.v,
     });
 
     return (
@@ -18,7 +19,7 @@ const Entrada = (props)=>{
             <td>{state.valor}</td>
             <td>{state.data}</td>
             <td>{state.tags}</td>
-            <td><ModalEntrada classname="btn btn-warning" label="EDITAR"/></td>
+            <td><ModalEntrada classname="btn btn-warning" label="EDITAR" valor={state.v}/></td>
             <td>EXCLUIR</td>
             <td>MOVER</td>
         </tr>
