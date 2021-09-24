@@ -1,12 +1,13 @@
-export function setDados(Entrada) { // Entrada = {nome:"nome", valor:15.20, data:Date("03/05")}
-   // console.log(Entrada)
-   var dados = getDados();
-   var jsonEntradas = JSON.stringify(dados);
-   jsonEntradas[jsonEntradas.length] = Entrada;
-   localStorage.setItem("Entradas", jsonEntradas);
+export function setDados(Entrada, Posicao=undefined) { // Entrada = {nome:"nome", valor:15.20, data:Date("03/05")}
+    console.log(Entrada)
+   var Entradas = getDados();
+   if (Posicao === undefined) Posicao = Object.keys(Entradas).length
+   Entradas[Posicao] = Entrada;
+   localStorage.setItem("Entradas", JSON.stringify(Entradas));
 }
 
-function getDados() {
+export function getDados() {
     var dados = localStorage.getItem("Entradas");
-    return dados;
+    console.log(dados)
+    return !dados ? {} : JSON.parse(dados);
 }

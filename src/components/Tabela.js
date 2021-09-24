@@ -1,36 +1,34 @@
-import React, {useState, useEffect} from 'react';
+import React from 'react';
 import Entrada from './Entrada';
 import ModalEntrada from './ModalEntrada';
+import {getDados} from '../control/ControleDados';
 
-const Tabela = (props)=>{
+const Tabela = ()=>{
 
 
-    var a = JSON.stringify({
-        0: {nome:"nome", valor:15.20, data:Date("03/05")},
-        1: {nome:"nome2", valor:15.20, data:Date("03/05")},
-        2: {nome:"nome3", valor:15.20, data:Date("03/05")},
-    })
-    localStorage.setItem("Entradas", a);
-
+    //var a = JSON.stringify({
+    //    0: {nome:"nome", valor:15.20, data:Date("03/05")},
+    //    1: {nome:"nome2", valor:15.20, data:Date("03/05")},
+    //    2: {nome:"nome3", valor:15.20, data:Date("03/05")},
+    //})
+    //localStorage.setItem("Entradas", a);
 
     var entradas = []
-    var jsonEntradas = JSON.parse(localStorage.getItem("Entradas"))
+    var jsonEntradas = getDados()
     
 
     for(var [k, v] of Object.entries(jsonEntradas)){
         entradas.push(
             <Entrada 
                 nome={v.nome} 
-                valor={v.valor} 
+                valor={v.valor}
+                k={k}
                 data={v.data} 
                 tags={v.tags}
                 v={JSON.stringify(v)}/>
             );
     }
-    const [state, setState] = useState({
-        entradas: entradas,
-        filtros: []
-});
+    const state = { entradas, filtros: []};
 
     return (
         <div>
