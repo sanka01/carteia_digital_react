@@ -22,6 +22,13 @@
     font-weight: 800;
     font-size: 1.2em;
 }
+.hidden{
+    display: none !important;
+}
+.modal{
+    display: block;
+    z-index: 999;
+}
 .formModal{
     background-color: blanchedalmond;
     padding: 1em;

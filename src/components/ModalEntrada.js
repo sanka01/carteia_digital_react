@@ -45,7 +45,7 @@ class ModalEntrada extends React.Component {
     }
     
     render () {
-        return(<div >
+        return(<div class="modal hidden" >
             <h3>{this.label}</h3>
             <form  onSubmit={this.handleSubmit}  className="formModal">
                 <label for="nome">Nome</label>
