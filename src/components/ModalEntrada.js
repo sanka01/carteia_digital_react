@@ -1,11 +1,10 @@
 import React from 'react';
 import '../styles/modal.css';
-//import {setDados} from '../control/ControleDados.js';
+import {setDados} from '../control/ControleDados.js';
 
 class ModalEntrada extends React.Component {
     constructor(props) {
         super(props);
-        console.log(props)
         let valor = props.valor !== undefined ? JSON.parse(props.valor) : undefined;
         this.state = 
         props.valor === undefined ?
@@ -14,7 +13,7 @@ class ModalEntrada extends React.Component {
             valor: 0, 
             tags: "", 
             data: undefined,
-            modalIsOpen: false,
+            k: props.k,
         } 
         :
         {
@@ -22,7 +21,7 @@ class ModalEntrada extends React.Component {
             valor: valor.valor, 
             tags: valor.tags, 
             data: valor.data,
-            modalIsOpen: false,
+            k: props.k,
         };
 
         this.label = props.label;
@@ -33,13 +32,14 @@ class ModalEntrada extends React.Component {
 
     handleChange(event) {
         const t = event.target
-        const name = t.name
         this.setState({
-            [name]: t.value,
+            [t.name]: t.value,
         })
     }
 
     handleSubmit(event) {
+        console.log(this.state)
+        setDados({nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
         alert('Formulário enviado com sucesso: \n' + JSON.stringify(this.state));
         event.preventDefault();
     }
