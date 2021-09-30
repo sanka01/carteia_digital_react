@@ -1,6 +1,6 @@
 import React from 'react';
 import '../styles/modal.css';
-import {setDados} from '../control/ControleDados.js';
+import {addDado} from '../control/ControleDados.js';
 
 class ModalEntrada extends React.Component {
     constructor(props) {
@@ -41,10 +41,9 @@ class ModalEntrada extends React.Component {
     }
 
     handleSubmit(event) {
-        console.log(this.state)
-        setDados({nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
-        alert('Formulário enviado com sucesso: \n' + JSON.stringify(this.state));
+        addDado({nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
         event.preventDefault();
+        window.location.reload()
     }
 
     handleClick() {
@@ -54,7 +53,6 @@ class ModalEntrada extends React.Component {
     }
     
     render () {
-        console.log("a render")
         return this.state.willRender ? (<div >
             <h3>{this.label}</h3> <button onClick={this.handleClick}>X</button>
             <form  onSubmit={this.handleSubmit}  className="formModal">
