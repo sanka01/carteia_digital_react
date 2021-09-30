@@ -12,6 +12,7 @@ class ModalEntrada extends React.Component {
             nome: "", 
             valor: 0, 
             tags: "", 
+            dados: props.dados,
             data: undefined,
             k: props.k,
             willRender: false
@@ -21,6 +22,7 @@ class ModalEntrada extends React.Component {
             nome: valor.nome, 
             valor: valor.valor, 
             tags: valor.tags, 
+            dados: props.dados,
             data: valor.data,
             k: props.k,
             willRender: false
@@ -41,7 +43,8 @@ class ModalEntrada extends React.Component {
     }
     
     handleSubmit(event) {
-        addDado({nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
+        this.setState({valor: Number(this.state.valor,10)})
+        addDado(this.state.dados, {nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
         event.preventDefault();
         window.location.reload()
     }
@@ -59,30 +62,14 @@ class ModalEntrada extends React.Component {
         <div className="modal" >
         <h3>{this.label}</h3> <button onClick={this.handleClick} className="closeButton">X</button>
         <form  onSubmit={this.handleSubmit}  className="formModal">
-            <div class="row">
-                <div className="col">
-                    <label for="nome">Nome</label>
-                    <input id="nome" value={this.state.nome} name="nome" onChange={this.handleChange}/>
-                </div>
-                <div className="col">
-                    <label for='valor'>Valor</label>
+                    <input id="nome" value={this.state.nome} placeholder="Nome" name="nome" onChange={this.handleChange}/>
                     <input id="valor" name="valor" value={this.state.valor} type="number" step="0.01" onChange={this.handleChange}/>
-                </div>
-            </div>
-            <div class="row">
-                <div className="col">
-                    <label for='data'>Data</label>
                     <input id="data" name="data" type="date" value={this.state.data} onChange={this.handleChange}/>
-                </div>
-                <div className="col">
-                    <label for='tags'>Tags</label>
-                    <input id="tags" name="tags" value={this.state.tags} onChange={this.handleChange}/>
-                </div>
-            </div>
+                    <input id="tags" placeholder="tags" name="tags" value={this.state.tags} onChange={this.handleChange}/>
             
-            <br/><button className="btn btn-success" type="submit">Salvar</button>
+            <br/><button className="btn btn-success" type="submit">SALVAR</button>
         </form>
-        </div></div>) : <button className={this.props.label == 'Criar Novo' ? 'btn btn-success' : 'btn btn-warning'} onClick={this.handleClick}>{this.props.label}</button>;
+        </div></div>) : <button className={this.props.label == 'CRIAR NOVO' ? 'btn btn-success' : 'btn btn-warning'} onClick={this.handleClick}>{this.props.label}</button>;
     }
 }
 

@@ -3,46 +3,44 @@ import Entrada from './Entrada';
 import ModalEntrada from './ModalEntrada';
 import {getDados} from '../control/ControleDados';
 
-const Tabela = ()=>{
-
-
-    //var a = JSON.stringify({
-    //    0: {nome:"nome", valor:15.20, data:Date("03/05")},
-    //    1: {nome:"nome2", valor:15.20, data:Date("03/05")},
-    //    2: {nome:"nome3", valor:15.20, data:Date("03/05")},
-    //})
-    //localStorage.setItem("Entradas", a);
+const Tabela = (props)=>{
 
     var entradas = []
-    var jsonEntradas = getDados()
+    var jsonEntradas = getDados(props.dados)
     
 
+    var i = 0
     for(var [k, v] of Object.entries(jsonEntradas)){
         entradas.push(
             <Entrada 
                 nome={v.nome} 
                 valor={v.valor}
                 k={k}
+                dados={props.dados}
                 data={v.data} 
                 tags={v.tags}
                 v={JSON.stringify(v)}/>
             );
+            i += parseFloat(v.valor);
     }
-    const state = { entradas, filtros: []};
-
+    const state = { dados: props.dados,entradas, filtros: []};
     return (
         <div>
-        <table className="rwd-table">
+        <table className="rwd-table" cellPadding="0" cellSpacing="0">
           <tr>
-            <th>Nome</th>
-            <th>Valor</th>
-            <th>Data</th>
-            <th>tags</th>
-            <th colSpan="3">Ações</th>
+            <th>NOME</th>
+            <th>VALOR</th>
+            <th>DATA</th>
+            <th>TAGS</th>
+            <th colSpan="3" className="center">AÇÕES</th>
           </tr>
           {state.entradas}
+          <tr>
+            <td>Total</td>
+            <td>R$ {i}</td>
+        </tr>
        </table>
-       <ModalEntrada label="Criar Novo"/>
+       <ModalEntrada dados={props.dados} label="CRIAR NOVO"/>
        </div>
     );
   };

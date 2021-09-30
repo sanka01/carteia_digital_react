@@ -1,7 +1,12 @@
 .App {
   text-align: center;
 }
-
+.grid-2{
+  display: flex;
+}
+.div-tabela{
+  margin: 1rem;
+}
 .App-logo {
   height: 40vmin;
   pointer-events: none;
