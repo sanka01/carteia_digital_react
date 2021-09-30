@@ -14,6 +14,7 @@ class ModalEntrada extends React.Component {
             tags: "", 
             data: undefined,
             k: props.k,
+            willRender: false
         } 
         :
         {
@@ -22,12 +23,14 @@ class ModalEntrada extends React.Component {
             tags: valor.tags, 
             data: valor.data,
             k: props.k,
+            willRender: false
         };
 
         this.label = props.label;
 
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleClick = this.handleClick.bind(this);
     }
 
     handleChange(event) {
@@ -43,10 +46,17 @@ class ModalEntrada extends React.Component {
         alert('Formulário enviado com sucesso: \n' + JSON.stringify(this.state));
         event.preventDefault();
     }
+
+    handleClick() {
+        this.setState({
+            willRender: !this.state.willRender
+        })
+    }
     
     render () {
-        return(<div >
-            <h3>{this.label}</h3>
+        console.log("a render")
+        return this.state.willRender ? (<div >
+            <h3>{this.label}</h3> <button onClick={this.handleClick}>X</button>
             <form  onSubmit={this.handleSubmit}  className="formModal">
                 <label for="nome">Nome</label>
                 <br/><input id="nome" value={this.state.nome} name="nome" onChange={this.handleChange}/>
@@ -59,7 +69,7 @@ class ModalEntrada extends React.Component {
             
                 <br/><button type="submit">AAA</button>
             </form>
-        </div>)
+        </div>) : <button onClick={this.handleClick}>{this.props.label}</button>;
     }
 }
 
