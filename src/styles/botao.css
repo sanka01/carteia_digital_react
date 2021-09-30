@@ -1,3 +1,20 @@
 .btn{
-    
+    padding: 1rem;
+    margin-right: 0;
+    margin-left: 0;
+    color: #ffebcd;
+    border-width: 1px;
+    border-radius: .5rem;
+}
+.btn-success{
+    background: #198754;
+    border-color: #198754;
+}
+.btn-warning{
+    background: #948710;
+    border-color: #948710;
+}
+.btn-danger{
+    background: #e91212;
+    border-color: #e91212;
 }

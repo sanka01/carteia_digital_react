@@ -1,6 +1,7 @@
 import React from 'react';
 import ModalEntrada from './ModalEntrada';
 import "../styles/botao.css";
+import { removeDados } from '../control/ControleDados';
 
 
 
@@ -20,8 +21,8 @@ const Entrada = (props)=>{
             <td>{state.valor}</td>
             <td>{state.data}</td>
             <td>{state.tags}</td>
-            <td><ModalEntrada classname="btn btn-warning" label="EDITAR" valor={state.v} k={state.k}/></td>
-            <td>EXCLUIR</td>
+            <td><ModalEntrada label="EDITAR" valor={state.v} k={state.k}/></td>
+            <td><button className="btn btn-danger" onClick={()=>{removeDados(state.k);window.location.reload()}}>EXCLUIR</button></td>
             <td>MOVER</td>
         </tr>
     );
