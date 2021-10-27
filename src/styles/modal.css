@@ -2,15 +2,29 @@
     position: absolute; 
     margin: auto;
     inset: 20px; 
-    height: 50vh;
-    width: 25vw;
-    border: 1px solid rgb(204, 204, 204); 
-    border-radius: 20px;
-    background: rgb(255, 255, 255); 
-    overflow: auto; 
+    height: 35vh;
+    width: 30vw;
+    border-radius: .5rem;
+    background: #34495e; 
+    color: #ddd;
     outline: none; 
-    padding: 20px;
+    padding: .5rem;
 }
+@media screen and (max-width: 1200px){
+    .modal{
+        width: 50vw;
+    }
+}
+.row {
+    display: flex;
+    flex-shrink: 0;
+    width: 100%;
+    max-width: 100%;
+}
+.col {
+    flex: 1 0 0%;
+}
+
 .closeButton{
     background-color:rgba(187, 76, 76, 0.514);
     border: 0;
@@ -20,17 +34,32 @@
     right: 0;
     color: rgba(24, 20, 20, 0.205);
     font-weight: 800;
+    border-radius: 0 .5rem 0px 0px;
     font-size: 1.2em;
 }
+.modal{
+    display: block;
+    z-index: 999;
+}
+.overlay{
+    background: #00000055;
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+}
 .formModal{
-    background-color: blanchedalmond;
     padding: 1em;
     margin: auto;
-    width: 50%;
+    text-align: center;
+    text-align: -webkit-center;
 }
 .formModal input{
-    margin: 1em;
-    border-radius: 25px;
+    margin: 1em auto;
+    border-radius: .5rem;
+    width: 50%;
     padding: .3em;
     border-bottom: 1px solid #000;
     border-top: 0;

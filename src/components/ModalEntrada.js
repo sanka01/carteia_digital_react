@@ -12,6 +12,7 @@ class ModalEntrada extends React.Component {
             nome: "", 
             valor: 0, 
             tags: "", 
+            dados: props.dados,
             data: undefined,
             k: props.k,
             willRender: false
@@ -21,31 +22,33 @@ class ModalEntrada extends React.Component {
             nome: valor.nome, 
             valor: valor.valor, 
             tags: valor.tags, 
+            dados: props.dados,
             data: valor.data,
             k: props.k,
             willRender: false
         };
-
+        
         this.label = props.label;
-
+        
         this.handleChange = this.handleChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleClick = this.handleClick.bind(this);
     }
-
+    
     handleChange(event) {
         const t = event.target
         this.setState({
             [t.name]: t.value,
         })
     }
-
+    
     handleSubmit(event) {
-        addDado({nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
+        this.setState({valor: Number(this.state.valor,10)})
+        addDado(this.state.dados, {nome: this.state.nome, valor: this.state.valor, data: this.state.data, tags: this.state.tags}, this.state.k)
         event.preventDefault();
         window.location.reload()
     }
-
+    
     handleClick() {
         this.setState({
             willRender: !this.state.willRender
@@ -53,21 +56,20 @@ class ModalEntrada extends React.Component {
     }
     
     render () {
-        return this.state.willRender ? (<div >
-            <h3>{this.label}</h3> <button onClick={this.handleClick}>X</button>
-            <form  onSubmit={this.handleSubmit}  className="formModal">
-                <label for="nome">Nome</label>
-                <br/><input id="nome" value={this.state.nome} name="nome" onChange={this.handleChange}/>
-                <label for='valor'>Valor</label>
-                <input id="valor" name="valor" value={this.state.valor} type="number" step="0.01" onChange={this.handleChange}/>
-                <label for='data'>Data</label>
-                <input id="data" name="data" type="date" value={this.state.data} onChange={this.handleChange}/>
-                <label for='tags'>Tags</label>
-                <input id="tags" name="tags" value={this.state.tags} onChange={this.handleChange}/>
+        return this.state.willRender ? (
+        <div>
+        <div className="overlay"></div>
+        <div className="modal" >
+        <h3>{this.label}</h3> <button onClick={this.handleClick} className="closeButton">X</button>
+        <form  onSubmit={this.handleSubmit}  className="formModal">
+                    <input id="nome" value={this.state.nome} placeholder="Nome" name="nome" onChange={this.handleChange}/>
+                    <input id="valor" name="valor" value={this.state.valor} type="number" step="0.01" onChange={this.handleChange}/>
+                    <input id="data" name="data" type="date" value={this.state.data} onChange={this.handleChange}/>
+                    <input id="tags" placeholder="tags" name="tags" value={this.state.tags} onChange={this.handleChange}/>
             
-                <br/><button type="submit">AAA</button>
-            </form>
-        </div>) : <button onClick={this.handleClick}>{this.props.label}</button>;
+            <br/><button className="btn btn-success" type="submit">SALVAR</button>
+        </form>
+        </div></div>) : <button className={this.props.label === 'CRIAR NOVO' ? 'btn btn-success' : 'btn btn-warning'} onClick={this.handleClick}>{this.props.label}</button>;
     }
 }
 

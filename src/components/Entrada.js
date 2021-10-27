@@ -6,10 +6,12 @@ import { removeDados } from '../control/ControleDados';
 
 
 const Entrada = (props)=>{
+
     const state = {
         nome: props.nome,
         valor: props.valor,
         data: props.data,
+        dados: props.dados,
         tags: props.tags,
         k: props.k,
         v: props.v,
@@ -18,11 +20,11 @@ const Entrada = (props)=>{
     return (
         <tr>
             <td>{state.nome}</td>
-            <td>{state.valor}</td>
+            <td>R$ {state.valor}</td>
             <td>{state.data}</td>
             <td>{state.tags}</td>
-            <td><ModalEntrada classname="btn btn-warning" label="EDITAR" valor={state.v} k={state.k}/></td>
-            <td><button onClick={()=>{removeDados(state.k);window.location.reload()}}>EXCLUIR</button></td>
+            <td><ModalEntrada dados={state.dados} label="EDITAR" valor={state.v} k={state.k}/></td>
+            <td><button className="btn btn-danger" onClick={()=>{removeDados(state.dados,state.k);window.location.reload()}}>EXCLUIR</button></td>
             <td>MOVER</td>
         </tr>
     );
