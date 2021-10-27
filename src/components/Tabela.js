@@ -4,15 +4,7 @@ import ModalEntrada from './ModalEntrada';
 import {getDados} from '../control/ControleDados';
 
 const Tabela = ()=>{
-
-
-    //var a = JSON.stringify({
-    //    0: {nome:"nome", valor:15.20, data:Date("03/05")},
-    //    1: {nome:"nome2", valor:15.20, data:Date("03/05")},
-    //    2: {nome:"nome3", valor:15.20, data:Date("03/05")},
-    //})
-    //localStorage.setItem("Entradas", a);
-
+  
     var entradas = []
     var jsonEntradas = getDados()
     
