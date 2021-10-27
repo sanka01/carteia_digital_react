@@ -69,7 +69,7 @@ class ModalEntrada extends React.Component {
             
             <br/><button className="btn btn-success" type="submit">SALVAR</button>
         </form>
-        </div></div>) : <button className={this.props.label == 'CRIAR NOVO' ? 'btn btn-success' : 'btn btn-warning'} onClick={this.handleClick}>{this.props.label}</button>;
+        </div></div>) : <button className={this.props.label === 'CRIAR NOVO' ? 'btn btn-success' : 'btn btn-warning'} onClick={this.handleClick}>{this.props.label}</button>;
     }
 }
 

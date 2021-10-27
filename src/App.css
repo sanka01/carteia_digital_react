@@ -1,8 +1,21 @@
 .App {
   text-align: center;
+  display: inline-block;
 }
 .grid-2{
   display: flex;
+}
+.saldo{
+  background: #282c34;
+  padding: .5em;
+  max-width: 10em;
+  color: antiquewhite;
+  border-radius: 0.4em;
+  margin: auto;
+}
+.saldo span::after{
+  content: "\a";
+  white-space: pre;
 }
 .div-tabela{
   margin: 1rem;

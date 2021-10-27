@@ -23,6 +23,9 @@ const Tabela = (props)=>{
             );
             i += parseFloat(v.valor);
     }
+    function getSaldo(){
+      return i;
+    }
     const state = { dados: props.dados,entradas, filtros: []};
     return (
         <div>
@@ -37,7 +40,7 @@ const Tabela = (props)=>{
           {state.entradas}
           <tr>
             <td>Total</td>
-            <td>R$ {i}</td>
+            <td>R$ <span className="valorTotal">{i}</span></td>
         </tr>
        </table>
        <ModalEntrada dados={props.dados} label="CRIAR NOVO"/>

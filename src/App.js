@@ -1,7 +1,9 @@
 import './App.css';
 import Tabela from './components/Tabela';
+import Saldo from './components/Saldo';
 import './styles/tabela.css';
 function App() {
+
   return (
     <div className="App">
       <div className="grid-2">
@@ -14,6 +16,7 @@ function App() {
           <Tabela dados="saldo"/>
         </div>
       </div>
+      <Saldo />
     </div>
     );
   }
